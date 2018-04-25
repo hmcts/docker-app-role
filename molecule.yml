@@ -1,0 +1,23 @@
+---
+
+dependency:
+  name: galaxy
+
+driver:
+  name: docker
+
+docker:
+  containers:
+    - name: docker-app-role
+      dockerfile: tests/Dockerfile
+      image: centos/docker
+      image_version: latest
+      privileged: yes
+      cap_add:
+        - ALL
+
+ansible:
+  playbook: tests/playbook.yml
+
+verifier:
+  name: testinfra

@@ -1,0 +1,23 @@
+---
+
+- name: Create directory
+  become: true
+  file:
+    path: "/opt/{{ docker_app.name }}"
+    group: docker
+    state: directory
+
+- name: Copy docker-compose.yml file
+  become: true
+  template:
+    src: "{{ docker_app.name }}/docker-compose.yml"
+    dest: "/opt/{{ docker_app.name }}/docker-compose.yml"
+    group: docker
+
+- name: Create and start containers
+  become: true
+  command: docker-compose up -d
+  args:
+    chdir: "/opt/{{ docker_app.name }}"
+  register: result
+  changed_when: "'Creating' in result.stderr or 'Starting' in result.stderr"

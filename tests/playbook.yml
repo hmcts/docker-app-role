@@ -1,0 +1,9 @@
+---
+
+- hosts: all
+  become: true
+  vars:
+    docker_apps:
+      - name: registry
+  roles:
+    - role: docker-app-role

@@ -1,0 +1,7 @@
+---
+
+- name: Deploy application
+  include: deploy.yml
+  with_items: "{{ docker_apps }}"
+  loop_control:
+    loop_var: docker_app

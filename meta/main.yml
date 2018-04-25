@@ -1,0 +1,11 @@
+---
+
+galaxy_info:
+  description: Install applications in Docker environment using `docker-compose.yml` files
+
+  author: HMCTS Reform programme
+  company: HMCTS
+
+  license: MIT
+
+dependencies: []
